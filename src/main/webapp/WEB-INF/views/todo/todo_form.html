@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../resources/css/bootstrap.min.css">
+    <script src="../../../resources/js/jquery-3.5.0.min.js"></script>
+    <script src="../../../resources/js/popper.min.js"></script>
+    <script src="../../../resources/js/bootstrap.min.js"></script>
+    <style>
+        .w-14{
+            width : 6.4em;
+        }
+    </style>
+    <script>
+        $(function(){
+
+        });
+    </script>
+</head>
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="btn-toolbar d-flex justify-content-center" role="toolbar"
+                 aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2 " role="group" aria-label="First group">
+                    <button id="btnMon" type="button" class="btn btn-secondary w-14">월요일</button>
+                    <button id="btnTue" type="button" class="btn btn-secondary w-14">화요일</button>
+                    <button id="btnWed" type="button" class="btn btn-secondary w-14">수요일</button>
+                    <button id="btnThu" type="button" class="btn btn-secondary w-14">목요일</button>
+                    <button id="btnFri" type="button" class="btn btn-secondary w-14">금요일</button>
+                    <button id="btnSat" type="button" class="btn btn-secondary w-14">K.K(토)</button>
+                    <button id="btnSun" type="button" class="btn btn-secondary w-14">무파니(일)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pt-3">
+        <div class="col-12">
+            <h1 class="text-center">할 일</h1>
+            <div id="todo_body" class="p-2 border border-dark">
+                <table id="tbTodo "class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">할 일</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="moveRow">
+                        <th scope="row">1</th>
+                        <td>돌 캐기</td>
+                    </tr>
+                    <tr class="moveRow">
+                        <th scope="row">2</th>
+                        <td>나무 베기</td>
+                    </tr>
+                    <tr class="moveRow">
+                        <th scope="row">3</th>
+                        <td>주민에게 레시피 받기1</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+
+.custom-control-label::before{
+    width: 1rem;
+    height: 1rem;
+
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+
+    background-color: #1e7e34;
+}
+
+.custom-control-label::before{
+    width: 1rem;
+    height: 1rem;
+    background-color: white;
+}
+
+.custom-control-label{
+    font-size: 1rem;
+}
