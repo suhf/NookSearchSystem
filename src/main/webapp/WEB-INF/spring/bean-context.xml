@@ -4,6 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 
         <bean name="commonMav" class="org.springframework.web.servlet.ModelAndView" />
-        <bean id="memVO" class="co.nook.app.member.MemberVO"/>
+        <bean id="userVO" class="co.nook.app.user.vo.UserVo" />
 
 </beans>
