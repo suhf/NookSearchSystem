@@ -7,6 +7,8 @@ public class TodoVo{
 	String uDay;
 	String uNpc;
 	String uCheck;
+	String uSub1;
+	String uSub2;
 
 	public int getuNo(){
 		return uNo;
@@ -54,5 +56,21 @@ public class TodoVo{
 
 	public void setuCheck(String uCheck){
 		this.uCheck = uCheck;
+	}
+
+	public String getuSub1(){
+		return uSub1;
+	}
+
+	public void setuSub1(String uSub1){
+		this.uSub1 = uSub1;
+	}
+
+	public String getuSub2(){
+		return uSub2;
+	}
+
+	public void setuSub2(String uSub2){
+		this.uSub2 = uSub2;
 	}
 }

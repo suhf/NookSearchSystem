@@ -18,8 +18,8 @@ public class TodoServiceImpl implements TodoService{
 	}
 
 	@Override
-	public ArrayList<TodoVo> selectAll(Connection conn){
-		return todoDao.selectAll(conn);
+	public ArrayList<TodoVo> selectAll(Connection conn, int userNo){
+		return todoDao.selectAll(conn, userNo);
 	}
 
 	@Override

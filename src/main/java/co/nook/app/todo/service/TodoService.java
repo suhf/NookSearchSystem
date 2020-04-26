@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 public interface TodoService{
-	public ArrayList<TodoVo> selectAll(Connection conn);
+	public ArrayList<TodoVo> selectAll(Connection conn, int userNo);
 	public int insert(Connection conn, TodoVo vo);
 	public int update(Connection conn, TodoVo vo);
 	public int delete(Connection conn, TodoVo vo);
