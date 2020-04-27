@@ -98,4 +98,16 @@ public class TodoController{
 		Dao.close(conn);
 		return returnMap;
 	}
+
+	@ResponseBody
+	@RequestMapping("/insertTodo.do")
+	public HashMap<String, Object> todoUpdate( HttpServletRequest request, @RequestBody HashMap<String, Object> map){
+		HashMap<String, Object> returnMap = new HashMap<String, Object>();
+		int userno = (int)request.getSession().getAttribute("userNo");
+
+
+
+		return returnMap;
+
+	}
 }
