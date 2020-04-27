@@ -20,32 +20,32 @@ public class UserServiceImpl implements UserService{
 
 
 	@Override
-	public ArrayList<UserVo> allSelect(Connection conn){
-		return userDao.allSelect(conn);
+	public ArrayList<UserVo> allSelect(){
+		return userDao.allSelect();
 	}
 
 	@Override
-	public UserVo select(Connection conn, String id){
-		return userDao.select(conn, id);
+	public UserVo select( String id){
+		return userDao.select( id);
 	}
 
 	@Override
-	public UserVo select(Connection conn, int userNo){
-		return userDao.select(conn, userNo);
+	public UserVo select( int userNo){
+		return userDao.select( userNo);
 	}
 
 	@Override
-	public int insert(Connection conn, UserVo vo){
-		return userDao.insert(conn, vo);
+	public int insert( UserVo vo){
+		return userDao.insert( vo);
 	}
 
 	@Override
-	public int update(Connection conn, UserVo vo){
-		return userDao.update(conn, vo);
+	public int update( UserVo vo){
+		return userDao.update( vo);
 	}
 
 	@Override
-	public int delete(Connection conn, UserVo vo){
-		return userDao.delete(conn, vo);
+	public int delete( UserVo vo){
+		return userDao.delete( vo);
 	}
 }

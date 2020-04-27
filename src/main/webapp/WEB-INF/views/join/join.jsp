@@ -20,7 +20,7 @@
         $(document).ready(function(){
 
             $("#pwCheck").change(function(){
-               if($("#pwCheck").val() != $("#pw").val()){
+               if($("#pwCheck").val() != $("#password").val()){
                    $("#pwCheck").focus();
                    $("#pwCheckHelp").show();
                }else{
@@ -38,7 +38,7 @@
             json.id = str;
             var parsed = JSON.stringify(json);
             $("#btn_join").off();
-            if($("#pwCheck").val() == $("#pw").val()) {
+            if($("#pwCheck").val() == $("#password").val()) {
                 $.ajax({
                     type: "POST",
                     url: "userCheck.do",
@@ -59,7 +59,7 @@
                     }
                 });
             }else{
-                if($("#pwCheck").val() != $("#pw").val()){
+                if($("#pwCheck").val() != $("#password").val()){
                     $("#pwCheck").focus();
                     $("#pwCheckHelp").show();
                 }else{
@@ -83,7 +83,7 @@
                     </div>
                     <div class="form-group">
                         <label>비밀번호</label>
-                        <input type="password" id="pw" name="pw" class="form-control" placeholder="Password" required>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
                     </div>
                     <div class="form-group">
                         <label>비밀번호 확인</label>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @Service("todoService")
@@ -18,22 +19,27 @@ public class TodoServiceImpl implements TodoService{
 	}
 
 	@Override
-	public ArrayList<TodoVo> selectAll(Connection conn, int userNo){
-		return todoDao.selectAll(conn, userNo);
+	public ArrayList<TodoVo> selectAll( int userNo){
+		return todoDao.selectAll( userNo);
 	}
 
 	@Override
-	public int insert(Connection conn, TodoVo vo){
-		return todoDao.insert(conn, vo);
+	public TodoVo selectLast() throws SQLException{
+		return todoDao.selectLast();
 	}
 
 	@Override
-	public int update(Connection conn, TodoVo vo){
-		return todoDao.update(conn, vo);
+	public int insert( TodoVo vo) {
+		return todoDao.insert( vo);
 	}
 
 	@Override
-	public int delete(Connection conn, TodoVo vo){
-		return todoDao.delete(conn, vo);
+	public int update(TodoVo vo){
+		return todoDao.update( vo);
+	}
+
+	@Override
+	public int delete( TodoVo vo){
+		return todoDao.delete( vo);
 	}
 }

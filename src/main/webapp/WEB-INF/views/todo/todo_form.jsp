@@ -57,12 +57,11 @@
         function removeDel($input){
             $input.unwrap("del");
         }
+        function showHideCheck($button, bool){
+            let $img = $button.find("i");
+            if(!bool){
 
 
-
-        function toggleCheck($button){
-            let $img = $button.find("svg");
-            if($img.hasClass("leafCheck")){
                 $img.removeClass("leafCheck");
                 $img.hasClass("leafHide");
                 $img.hide();
@@ -71,6 +70,24 @@
                 $img.removeClass("leafHide");
                 $img.addClass("leafCheck");
                 $img.show();
+                console.log("leaf Show");
+            }
+        }
+
+
+        function toggleCheck($button){
+            let $img = $button.find("svg");
+            if($img.hasClass("leafCheck")){
+                console.log("leaf HIde");
+                $img.removeClass("leafCheck");
+                $img.hasClass("leafHide");
+                $img.hide();
+
+            }else{
+                $img.removeClass("leafHide");
+                $img.addClass("leafCheck");
+                $img.show();
+                console.log("leaf Show");
             }
         }
 
@@ -314,18 +331,20 @@
             $addTodoTr = $("<tr>");
             $tbodyTodo.append($addTodoTr);
             //숫자 부분
-
+            ++count;
             let $td = $("<td>");
             $addTodoTr.append($td);
-            $td.html((count+1).toString());
+            $td.html(count.toString());
 
             //체크 박스 부분
             $td = $("<td>");
             $addTodoTr.append($td);
             let $btnLeaf = $("<ct:button_leaf />");
+            showHideCheck($btnLeaf, false);
             $btnLeaf.on("click", { button : $btnLeaf } , toggleCheckByEvent);
 
             $td.append($btnLeaf);
+
             //content 부분
             $td = $("<td>");
             $addTodoTr.append($td);
@@ -354,18 +373,41 @@
             $divCol.append($btnSave);
             $btnSave.on("click", insertLine);
         }
-        function insertLine(){
+        function insertLine() {
+            let $tr = $(this).parents("tr");
             let content = $(this).parent().parent().find("input[name='ipTodo']").val();
             let sub2 = $(this).parent().parent().find("input[name='ipMax']").val();
-            let check = $(this).parents("tr").find("svg").hasClass("leafCheck");
+            let check = $tr.find("svg").hasClass("leafCheck");
+            let lineNo = $tr.find("td:first").html();
 
 
-            console.log("content : "+content);
-            console.log("sub2 : " + sub2);
-            console.log("check : " + check);
+            let json= {};
+            json.content= content;
+            json.sub2 = sub2;
+            json.check = check;
+            json.lineNo = lineNo;
 
+            let parsed = JSON.stringify(json);
             //controller에 추가
+            $.ajax({
+                type: "POST",
+                url: "insertTodo.do",
+                data: parsed,
+                datatype: "json",
+                contentType: "application/json",
+                success: function (data) {
+                    if(data.result == "true"){
+                        $tr.remove();
+                        alert("입력 성공");
+                        AddTr(parseInt(lineNo)-1, data.item);
+                    }else{
+                        alert("입력 실패");
+                    }
+                }
+            });
         }
+
+
 
     </script>
 </head>

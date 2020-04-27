@@ -24,7 +24,7 @@
         function login(){
             let json = {};
             json.id = $("#id").val();
-            json.pw = $("#pw").val();
+            json.password = $("#password").val();
             let parsed = JSON.stringify(json);
 
             console.log(parsed);
@@ -63,8 +63,8 @@
             <label for="id">ID : </label>
             <input class="form-control" type="text" id="id" name="id" aria-describedby="idHelp">
             <small id="idHelp" class="form-text text-muted">아이디를 입력해주세요</small>
-            <label for="pw">PW : </label>
-            <input class="form-control" type="password" id="pw" name="pw" aria-describedby="pwHelp">
+            <label for="password">PW : </label>
+            <input class="form-control" type="password" id="password" name="password" aria-describedby="pwHelp">
             <small id="pwHelp" class="form-text text-muted">비밀번호를 입력해주세요</small>
             <button id="btn_login" class="btn btn-primary" type="button">로그인</button>
             <button id="btn_join" class="btn btn-primary" type="button">회원가입</button>

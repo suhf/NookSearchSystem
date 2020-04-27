@@ -1,7 +1,6 @@
 package co.nook.app.user.web;
 
 import co.nook.app.HomeController;
-import co.nook.app.common.Dao;
 import co.nook.app.common.SHAEncrypt;
 import co.nook.app.user.service.UserService;
 import co.nook.app.user.vo.UserVo;
@@ -12,9 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.Connection;
-import java.util.HashMap;
+import java.sql.SQLException;
 
 @Controller
 public class UserController{
@@ -30,19 +28,19 @@ public class UserController{
 
 
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
-	public String joinProcess(@RequestParam String id, @RequestParam String pw, Model model){
-		Connection conn = Dao.getConnection();
+	public String joinProcess(UserVo userVo, Model model) throws SQLException{
+
 		UserVo vo = new UserVo();
 
 		String salt = SHAEncrypt.generateSalt();
-		String encPw= SHAEncrypt.getEncrypt(pw, salt);
+		String encPw= SHAEncrypt.getEncrypt(userVo.getPassword(), salt);
 
-		vo.setId(id);
+		vo.setId(userVo.getId());
 		vo.setPassword(encPw);
 		vo.setSalt(salt);
 
-		int result = userService.insert(conn, vo );
-		Dao.close(conn);
+		int result = userService.insert( vo );
+
 		String view = "login/login_form";
 		if(result == 0){
 			view = "join/join";

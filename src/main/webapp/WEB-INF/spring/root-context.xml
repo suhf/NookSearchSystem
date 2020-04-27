@@ -6,6 +6,19 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		  destroy-method="close">
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver" />
+		<property name="url" value="jdbc:mariadb://coon.myds.me:3307/NookSearch" />
+		<property name="username" value="minechost" />
+		<property name="password" value="Ahstmxj5zos1!" />
+
+	</bean>
+
+	<!-- Spring JDBC 설정 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 
 
 </beans>
