@@ -28,13 +28,9 @@
         });
 
         function getContentType(content){
-            let newContent = content.replace(' ','');
-            let slashType = newContent.indexOf(('/'));
-            let leftGaulho = newContent.indexOf('(');
-            let rightGaulho = newContent.indexOf(')');
-            //TODO : 슬래시 기준으로 좌우측에 괄호가 있는지 체크해야함
-            //TODO : 완성 아님 아직
-            if( slashType != -1 && leftGaulho != -1 && rightGaulho != -1){
+            let exg = /\( *[1-9]+[0-9]* *\/ *[1-9]+[0-9]* *\)/;
+
+            if( exg.test(content)){
                 return 'stack';
             }else{
                 return 'normal'
@@ -97,7 +93,6 @@
                 $img.removeClass("leafCheck");
                 $img.hasClass("leafHide");
                 $img.hide();
-
             }else{
                 $img.removeClass("leafHide");
                 $img.addClass("leafCheck");
@@ -356,6 +351,7 @@
             let $divCol = $("<div class='col'>");
             $divRow.append($divCol);
             let $input = $("<input type='text' name='ipTodo' class='form-control border-0 inputAddTodoText' placeholder='ex ) 주민에게 인사하기'>");
+            $input.on("keydown", onChangeTodo);
             $divCol.append($input);
 
             //최대치 부분 입력폼
@@ -405,6 +401,16 @@
                     }
                 }
             });
+        }
+
+        function onChangeTodo(event){
+
+            let key = event.which;
+            let isShift = event.shiftKey;
+            if((isShift && key == 86) || (isShift && key == 57) || (isShift && key == 48) || key == 191){
+
+                event.preventDefault();
+            }
         }
 
 
