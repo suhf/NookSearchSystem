@@ -32,6 +32,7 @@ public class UserDao implements UserService{
 	final String SELECT_BY_ID = "select * from user where id = ?";
 	@Override
 	public UserVo select( String id ){
+
 		try {
 			return jdbcTemplate.queryForObject(SELECT_BY_ID, new UserMapper(), id );
 		} catch (EmptyResultDataAccessException e) {

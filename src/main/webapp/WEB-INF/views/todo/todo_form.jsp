@@ -17,10 +17,10 @@
     <script src="${pageContext.request.contextPath}/resources/js/popper.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/all.min.js"></script>
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/todo.css">
 
     <script>
+        gaulhoExg = /\( *[0-9]+ *\/ *[0-9]+ *\)/;
         let dataList;
         $(function(){
             makeTable();
@@ -28,12 +28,11 @@
         });
 
         function getContentType(content){
-            let exg = /\( *[1-9]+[0-9]* *\/ *[1-9]+[0-9]* *\)/;
-
-            if( exg.test(content)){
+            console.log(gaulhoExg.test(content));
+            if( gaulhoExg.test(content) ){
                 return 'stack';
             }else{
-                return 'normal'
+                return 'normal';
             }
         }
 
@@ -53,6 +52,7 @@
         function removeDel($input){
             $input.unwrap("del");
         }
+
         function showHideCheck($button, bool){
             let $img = $button.find("i");
             if(!bool){
@@ -107,6 +107,8 @@
                 let $button = $(this).find("button");
                 let content = $input.val();
                 let type = getContentType(content);
+                console.log("content : " + content);
+                console.log(type);
                 let sub1;
                 let sub2;
                 if (type == 'normal') {
@@ -146,11 +148,17 @@
                     sub2 = maxCount;
                 }
                 let json = {};
+
+                let originStr = $input.val();
+                if( type == 'stack'){
+                    let gaulhoStr = gaulhoExg.exec(originStr)[0];
+                    originStr = originStr.replace(gaulhoStr, '');
+                }
+
                 json.todoNo = $(this).find(".hiddenClass").attr("name");
-                json.content = $input.val();
+                json.content = originStr;
                 json.check = $button.find("svg").hasClass("leafCheck")+"";
                 json.sub1 = sub1;
-
                 json.sub2 = sub2;
 
                 let parsed = JSON.stringify(json);
@@ -172,7 +180,6 @@
                     }
                 });
             });
-
         }
 
         function findGualho(str, point, direction){
@@ -292,14 +299,14 @@
             $hiddenInput.val(item.uNo);
 
             let newContent = item.uContent;
-            let type = getContentType(newContent);
-            if( type == "stack") {
-                let cIndex = newContent.indexOf('/');
+            let type = item.uSub2;
+            if( type) {
+
                 let curCount = item.uSub1;
                 let maxCount = item.uSub2;
-                let beforeContent = newContent.substring(0, findGualho(newContent, cIndex, -1));
-                let afterContent = newContent.substring(findGualho(newContent, cIndex, 1) - 1);
-                newContent = beforeContent + " " + curCount + " / " + maxCount + " " + afterContent;
+
+
+                newContent =  "( " + curCount + " / " + maxCount + " ) " + newContent ;
                 $todoInput.val(newContent);
             }else{
                 $todoInput.val(newContent);
@@ -376,6 +383,12 @@
             let check = $tr.find("svg").hasClass("leafCheck");
             let lineNo = $tr.find("td:first").html();
 
+            let exp = /[/()]+/;
+            if( exp.test(content) ){
+                showMessage("'/', '(', ')' 이 세 문자는 쓸수 없다 구리");
+                return;
+            }
+
 
             let json= {};
             json.content= content;
@@ -407,12 +420,15 @@
 
             let key = event.which;
             let isShift = event.shiftKey;
-            if((isShift && key == 86) || (isShift && key == 57) || (isShift && key == 48) || key == 191){
+            if((isShift && key == 57) || (isShift && key == 48) || (!isShift && key == 191)){
 
                 event.preventDefault();
             }
         }
 
+        function showMessage(message){
+            alert(message);
+        }
 
 
     </script>
