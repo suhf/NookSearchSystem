@@ -28,18 +28,22 @@ public class UserController{
 
 
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
-	public String joinProcess(UserVo userVo, Model model) throws SQLException{
+	public String joinProcess( UserVo userVo, Model model) throws SQLException{
 
-		UserVo vo = new UserVo();
+
 
 		String salt = SHAEncrypt.generateSalt();
 		String encPw= SHAEncrypt.getEncrypt(userVo.getPassword(), salt);
 
-		vo.setId(userVo.getId());
-		vo.setPassword(encPw);
-		vo.setSalt(salt);
+		System.out.println("SALT : "+ salt);
+		System.out.println("SALTCOUNT : "+ salt.length());
 
-		int result = userService.insert( vo );
+
+		userVo.setPassword(encPw);
+		userVo.setSalt(salt);
+
+
+		int result = userService.insert( userVo );
 
 		String view = "login/login_form";
 		if(result == 0){
@@ -56,7 +60,12 @@ public class UserController{
 
 	@RequestMapping("/todo_page.do")
 	public String toTodoPage(Model model){
-		return "todo/todo_form";
+		return "main/main";
+	}
+
+	@RequestMapping(value = "/login_page.do")
+	public String toLoginPage(Model model){
+		return "login/login_form";
 	}
 
 }

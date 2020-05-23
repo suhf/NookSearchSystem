@@ -9,6 +9,6 @@
     <title>Title</title>
 </head>
 <body>
-<jsp:forward page="adminDataInsertPage.do"></jsp:forward>
+<jsp:forward page="login_page.do"></jsp:forward>
 </body>
 </html>

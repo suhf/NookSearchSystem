@@ -6,6 +6,10 @@ public class UserVo{
 	String id;
 	String password;
 	String salt;
+	String hemisphere;
+	String CharacterName;
+	String IslandName;
+	String friendCode;
 
 	public int getUserNo(){
 		return userNo;
@@ -37,5 +41,37 @@ public class UserVo{
 
 	public void setSalt(String salt){
 		this.salt = salt;
+	}
+
+	public String getHemisphere(){
+		return hemisphere;
+	}
+
+	public void setHemisphere(String hemisphere){
+		this.hemisphere = hemisphere;
+	}
+
+	public String getCharacterName(){
+		return CharacterName;
+	}
+
+	public void setCharacterName(String characterName){
+		CharacterName = characterName;
+	}
+
+	public String getIslandName(){
+		return IslandName;
+	}
+
+	public void setIslandName(String islandName){
+		IslandName = islandName;
+	}
+
+	public String getFriendCode(){
+		return friendCode;
+	}
+
+	public void setFriendCode(String friendCode){
+		this.friendCode = friendCode;
 	}
 }

@@ -1,0 +1,172 @@
+@charset "utf-8";
+
+@font-face {font-family:NanumGothicWeb; font-style: normal; font-weight: normal; src: url('../../../resources/font/NanumGothic.eot'); src: local('../../../resources/font/NanumGothic.eot?iefix'), url('../../../resources/font/NanumGothic.woff') format('woff'), url('../../../resources/font/NanumGothic.ttf') format('truetype');}
+@font-face {font-family:NanumGothicBold; font-style: normal; font-weight: normal; src: url('../../../resources/font/NanumGothicBold.eot'); src: local('../../../resources/font/NanumGothicBold.eot?iefix'), url('../../../resources/font/NanumGothicBold.woff') format('woff'), url('../../../resources/font/NanumGothicBold.ttf') format('truetype');}
+@font-face {font-family:NanumMyeongjoWeb; font-style: normal; font-weight: normal; src: url('../../../resources/font/NanumMyeongjo.eot'); src: local('../../../resources/font/NanumMyeongjo.eot?iefix'), url('../../../resources/font/NanumMyeongjo.woff') format('woff'), url('../../../resources/font/NanumMyeongjo.ttf') format('truetype');}
+
+.main_wrap{width:100%; min-height:100%; background:#f1e369 url("../../../resources/images/main_bg.png") repeat;}
+
+#header{width:100%;}
+.main_head{width:100%; height:97px; background: url("../../../resources/images/top_bg.png") repeat-x; overflow:hidden;}
+.head{width:1280px; margin: 0 auto; overflow:hidden;}
+.head h1{float:left; margin-top:11px;}
+.head p{float:right;}
+.head p a{display:block; width:48px; height:48px; margin-top:14px; padding-top:7px; text-align:center; border:3px solid #fff; border-radius:50px; background: #4cb6a2; overflow: hidden;}
+
+#container{width:100%;}
+.contain{width:1280px; margin:0 auto; overflow:hidden;}
+
+.list_tab01{position:relative; width:630px; margin:50px auto; overflow: visible;}
+.list_box{position:relative; width:630px; height:136px; margin:0 auto; overflow: hidden;}
+.list_box ul{margin: 0; padding-top:20px; overflow: visible;}
+.list_box ul li:first-child{margin-left:0;}
+.list_box ul li{position:relative; float:left; width:116px; height:116px; margin: 0 0 100px -31px; text-align:center; border-radius:116px; background: #f5f7e1; overflow: visible;}
+.list_box ul li span{display:none; min-width:72px; margin-top:-12px; padding:6px 10px; font-family:NanumGothicBold; font-size:15px; border-radius:20px; background: #ede4bd;}
+.list_box ul li a{position:absolute; top:27%; left:50%; margin-left:-28px; display:block; width:48%; height:48%;}
+.list_box ul li a img{width:100%;}
+
+.list_box ul li:hover span{position:relative; display:inline-block; color:#fff; background: #f38400; z-index: 100;}
+
+.list_box ul li.list_on a .img_off{display: none;}
+.list_box ul li.list_on a .img_on{display: inline-block;}
+.list_box ul li.list_on span{display:inline-block; color:#fff; background: #f38400;}
+
+.img_on{display: none;}
+.list_box ul li:hover a .img_off{display: none;}
+.list_box ul li:hover a .img_on{display: inline-block;}
+
+.list_tab01 .btn_prev{position:absolute; top:45%; left:-38px; width:48px; height:48px; text-align:center; color:#fff; font-size:25px; font-family:NanumGothicBold; border:3px solid #f5f7e1; border-radius:25px 0 0 0; background: #897a65;}
+.list_tab01 .btn_next{position:absolute; top:45%; right:-36px; width:48px; height:48px; text-align:center; color:#fff; font-size:25px; font-family:NanumGothicBold; border:3px solid #f5f7e1; border-radius:0 25px 0 0; background: #897a65;}
+.list_tab01 .btn_prev span, .btn_next span{display: block; margin-top:12px;}
+
+
+.list_tab02{position:relative; width:1280px; margin:0 auto; border-radius:20px; background: #f38400; overflow:hidden;}
+.list_tab02_box{width:100%; height:65px; padding:0 65px; overflow:hidden;}
+.list_tab02 ul{width:1150px; margin:0;}
+.list_tab02 ul li:first-child{border:none;}
+.list_tab02 ul li{float:left; width:164px; border-left:1px solid #f5f7e1;}
+.list_tab02 ul li a{display: block; width:100%; padding:23px 0; text-align:center; color:#fff; font-size:20px; font-family: NanumGothicBold; text-decoration: none;}
+
+.list_tab02 ul li a:hover{background: #d87500;}
+.list_tab02 ul li.on a{background: #d87500;}
+
+.list_tab02 p{position: absolute; top:0; width:66px; height:70px; color:#fff; font-size:20px; background: #4eb8a2;}
+.list_tab02 p span{display: block; margin:23px 0 0 0; text-align: center;}
+.list_tab02 p.btn_prev02{left:0; border-right:1px solid #f5f7e1;}
+.list_tab02 p.btn_next02{right:0; border-left:1px solid #f5f7e1;}
+
+
+.item_set{margin-top:75px; overflow:hidden;}
+
+.item_search_btn{margin-bottom:30px; overflow:hidden;}
+.item_search_btn .item_search{float:left; display:table; width:60%; padding-right:7px; border-radius:50px; background: #f2f1d3;}
+.item_search_btn .item_search p{display:table-cell; width:134px; padding:20px 0; margin:0; vertical-align:middle; text-align:center; font-family: NanumGothicBold; font-size:20px; color:#00b8d3;}
+.item_search_btn .item_search input{display:table-cell; width:100%; height:44px; padding:0 10px; margin:7px 0; font-size:20px; font-family: NanumGothicWeb; color:#333; border:none; border-radius:0 50px 50px 0;}
+
+.item_search_btn .item_btn{float:right;}
+.item_search_btn .item_btn p:first-child{margin-right:17px;}
+.item_search_btn .item_btn p{float:left; width:156px; margin:0; padding:6px 7px 7px 7px; line-height:220%; font-family: NanumGothicBold; font-size:20px; color:#8a7b66; border-radius:50px; background: #f4f8e1;}
+.item_search_btn .item_btn p span{float:left; display:block; width:45px; height:45px; margin-right:10px; text-align:center; font-size:30px; color:#fff; border-radius:50px; background:#8a7b66;}
+
+.item_list{overflow:hidden;}
+.item_list_box{margin-bottom:60px; border-radius:25px; overflow:hidden;}
+.item_list_box table{width:100%;}
+
+.item_list_box table th:first-child{border-left:0;}
+.item_list_box table th{height:59px; padding:0 12px; text-align:center; font-size:20px; color:#fff; font-family: NanumGothicBold; border-left:1px solid #c9b768; background: #bfaa4d;}
+.item_list_box table th span{display: inline-block;}
+
+.item_list_box table tbody tr:first-child{border-top:0;}
+.item_list_box table tbody tr{border-top:1px solid #e1dd97;}
+.item_list_box table td{min-height:65px; padding:12px; text-align:center; font-size:20px; font-family: NanumGothicWeb; border-left:1px solid #e1dd97; background: #fffbb4;}
+.item_list_box table td span{display: inline-block;}
+
+.txt_left{text-align: left !important;}
+.rotate90{transform:rotate(90deg);}
+.rotate180{transform:rotate(180deg);}
+
+
+.updown_btn{position: fixed; bottom:5%; right:5%;}
+.updown_btn p:first-child{margin:0;}
+.updown_btn p{width:45px; height:45px; margin:10px 0 0 0; padding:10px 0 0 14px; font-size:20px; color:#bfaa4d; border:2px solid #bfaa4d; border-radius:8px; background: rgba(255,255,255, 0.4);}
+.updown_btn p span{display: inline-block;}
+.updown_btn p:hover {background: rgba(255,255,255, 0.8);}
+
+
+
+@media all and (max-width:1330px){
+	.head{width:1000px;}
+	
+	.contain{width:1000px;}
+	.list_tab02{width:1000px;}
+	.list_tab02 ul li{width:124px;}
+}
+
+
+@media all and (max-width:1050px){
+	.head{width:740px;}
+	
+	.contain{width:740px;}
+	
+	.list_tab01{width:460px;}
+	.list_box{width:460px;}
+	
+	.list_tab02{width:740px;}
+	.list_tab02 ul{width:100%;}
+	.list_tab02 ul li{width:20%;}
+	
+	.item_search_btn .item_search{width:50%;}
+}
+
+
+@media all and (max-width:760px){
+	.head{width:95%; margin:0 auto; border:1px solid red;}
+	.head h1{width:224px; margin-top:16px;}
+	.head h1 a img{width:100%;}
+	
+	.contain{width:95%; margin:0 auto;}
+	
+	.list_tab01{width:373px;}
+	.list_box{width:373px;}
+	
+	.list_tab02{width:100%;}
+	.list_tab02 ul li{width:25%;}
+	
+	.item_search_btn .item_search{width:100%; margin-bottom:10px;}
+
+}
+
+
+@media all and (max-width:350px){
+	
+	.head{border:1px solid blue;}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

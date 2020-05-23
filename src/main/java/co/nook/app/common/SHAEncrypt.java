@@ -57,7 +57,7 @@ public class SHAEncrypt{
 		//SecurityRandom 클래스도 있지만 일단 알아보지 않아 사용하지 않음
 		Random random = new Random();
 
-		byte[] salt = new byte[32];
+		byte[] salt = new byte[16];
 		random.nextBytes(salt);
 
 		StringBuffer sb = new StringBuffer();

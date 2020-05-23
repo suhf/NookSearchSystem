@@ -48,13 +48,17 @@ public class UserDao implements UserService{
 	}
 
 
-	final String INSERT = "INSERT INTO user (userno, id, password, salt) VALUES ( NEXTVAL(seq_user), ?, ?, ?)";
+	final String INSERT = "INSERT INTO user (userno, id, password, salt, hemisphere, CharacterName, IslandName, FriendCode) VALUES ( NEXTVAL(seq_user), ?, ?, ?, ?, ?, ?, ?)";
 	@Override
 	public int insert( UserVo vo){
 		int n =jdbcTemplate.update(INSERT,
 				vo.getId(),
 				vo.getPassword(),
-				vo.getSalt()
+				vo.getSalt(),
+				vo.getHemisphere(),
+				vo.getCharacterName(),
+				vo.getIslandName(),
+				vo.getFriendCode()
 		);
 		return n;
 	}
