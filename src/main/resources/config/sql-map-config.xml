@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+    <typeAliases>
+        <typeAlias type="co.nook.app.DefaultTodo.service.DefaultTodoVO" alias="DefaultTodoVO" />
+        <typeAlias type="co.nook.app.user.service.UserVO" alias="UserVO" />
+        <typeAlias type="co.nook.app.reservedTodo.service.ReservedTodoVO" alias="ReservedTodoVO" />
+    </typeAliases>
+
+</configuration>

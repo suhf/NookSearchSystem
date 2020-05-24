@@ -1,6 +1,6 @@
-package co.nook.app.DefaultTodo.vo;
+package co.nook.app.DefaultTodo.service;
 
-public class DefaultTodoVo{
+public class DefaultTodoVO{
 	private int dTodoNo;
 	private String dIsAlways;
 	private String dContent;

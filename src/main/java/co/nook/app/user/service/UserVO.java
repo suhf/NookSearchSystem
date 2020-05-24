@@ -1,7 +1,7 @@
-package co.nook.app.user.vo;
+package co.nook.app.user.service;
 
 
-public class UserVo{
+public class UserVO{
 	int userNo;
 	String id;
 	String password;

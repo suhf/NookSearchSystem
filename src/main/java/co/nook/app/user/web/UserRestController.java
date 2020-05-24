@@ -2,13 +2,12 @@ package co.nook.app.user.web;
 
 import co.nook.app.common.SHAEncrypt;
 import co.nook.app.user.service.UserService;
-import co.nook.app.user.vo.UserVo;
+import co.nook.app.user.service.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 
@@ -25,16 +24,16 @@ public class UserRestController{
 
 	@ResponseBody
 	@RequestMapping( value = "/userCheck.do", method= RequestMethod.POST)
-	public HashMap<String, Object> userCheck(@RequestBody UserVo userVo, Model model ) throws SQLException{
+	public HashMap<String, Object> userCheck(@RequestBody UserVO userVo, Model model ){
 		HashMap<String, Object> responseMap = new HashMap<String, Object>();
 
-		String id = userVo.getId();
+		System.out.println(userVo.getId());
 
-		UserVo vo = userService.select(id);
-
-		if( vo == null ){
+		UserVO vo = null;
+		try{
+			vo = userService.select(userVo);
 			responseMap.put("result", "false");
-		}else{
+		}catch(Exception e){
 			responseMap.put("result", "true");
 		}
 
@@ -43,24 +42,28 @@ public class UserRestController{
 
 	@ResponseBody
 	@RequestMapping(value = "/loginCheck.do", method = RequestMethod.POST)
-	public HashMap<String, Object> loginCheck(@RequestBody UserVo userVo, HttpServletRequest request, Model model) throws SQLException{
+	public HashMap<String, Object> loginCheck(@RequestBody UserVO userVo, HttpServletRequest request, Model model){
 		HashMap<String, Object> responseMap = new HashMap<String, Object>();
 
-		UserVo vo = userService.select(userVo.getId());
-		if(vo == null){
+		UserVO vo = null;
+		try{
+			vo = userService.select(userVo);
+		}catch(Exception e){
+			e.printStackTrace();
 			responseMap.put("result", "false");
 			return responseMap;
 		}
 
 		String encPw = SHAEncrypt.getEncrypt(userVo.getPassword(), vo.getSalt());
-
 		if( vo.getPassword().equals(encPw)){
 			responseMap.put("result", "true");
 			request.getSession().setAttribute("userNo", vo.getUserNo());
 			return responseMap;
 		}
 
+
 		responseMap.put("result", "false");
+
 		return responseMap;
 	}
 }

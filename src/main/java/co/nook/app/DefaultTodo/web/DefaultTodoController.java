@@ -1,10 +1,9 @@
 package co.nook.app.DefaultTodo.web;
 
 import co.nook.app.DefaultTodo.service.DefaultTodoService;
-import co.nook.app.DefaultTodo.vo.DefaultTodoVo;
+import co.nook.app.DefaultTodo.service.DefaultTodoVO;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
-import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
-import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class DefaultTodoController{
@@ -30,7 +29,7 @@ public class DefaultTodoController{
 
 	@RequestMapping("/adminDataInsertPage.do")
 	public String adminDataInsertPage(Model model){
-		ArrayList<DefaultTodoVo> list = defaultTodoService.selectAll();
+		List<DefaultTodoVO> list = defaultTodoService.selectAll();
 		System.out.println("Size : " +list.size());
 		model.addAttribute("list", list);
 
@@ -68,7 +67,7 @@ public class DefaultTodoController{
 				while((nextLine = reader.readNext()) != null){
 
 					if(line > 3){
-						DefaultTodoVo vo = csvLineToVo(nextLine);
+						DefaultTodoVO vo = csvLineToVo(nextLine);
 						defaultTodoService.insert(vo);
 					}
 					++line;
@@ -79,13 +78,13 @@ public class DefaultTodoController{
 				e.printStackTrace();
 		}
 
-		ArrayList<DefaultTodoVo> list = defaultTodoService.selectAll();
+		List<DefaultTodoVO> list = defaultTodoService.selectAll();
 		model.addAttribute("list", list);
 
 		return String.valueOf(isSaved);
 	}
-	private DefaultTodoVo csvLineToVo(String[] line){
-		DefaultTodoVo vo = new DefaultTodoVo();
+	private DefaultTodoVO csvLineToVo(String[] line){
+		DefaultTodoVO vo = new DefaultTodoVO();
 		vo.setdTodoNo(Integer.valueOf(line[0]));
 		vo.setdIsAlways(line[1].toUpperCase().trim());
 		vo.setdContent(line[2].trim());

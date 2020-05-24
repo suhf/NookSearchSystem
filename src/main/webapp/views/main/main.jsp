@@ -20,6 +20,7 @@
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="${$pageContext.reqeust.contextPath}/resources/js/main/main.js"></script>
 <html>
 
 <head>
@@ -260,12 +261,12 @@
 
 <!-- 슬라이드 스크립트 -->
 <script>
- $('.btn_prev').click(function(){
+ $('.btn_prev').on(function(){
  	$('.list_box ul li:last').prependTo('.list_box ul');
  	$('.list_box ul').css('margin-left',-116);
  	$('.list_box ul').stop().animate({marginLeft:0}, 0)
  });
- $('.btn_next').click(function(){
+ $('.btn_next').on(function(){
  	$('.list_box').stop().animate({marginLeft:-116}, 0, function(){
  		$('.list_box ul li:first').appendTo('.list_box ul');
  		$('.list_box').css({marginLeft:0})
@@ -274,12 +275,12 @@
  </script>
  
  <script>
- $('.btn_prev02').click(function(){
+ $('.btn_prev02').on(function(){
  	$('.list_tab02_box ul li:last').prependTo('.list_tab02_box ul');
  	$('.list_tab02_box ul').css('margin-left',-164);
  	$('.list_tab02_box ul').stop().animate({marginLeft:0}, 0)
  });
- $('.btn_next02').click(function(){
+ $('.btn_next02').on(function(){
  	$('.list_tab02_box').stop().animate({marginLeft:-116}, 0, function(){
  		$('.list_tab02_box ul li:first').appendTo('.list_tab02_box ul');
  		$('.list_tab02_box').css({marginLeft:0})

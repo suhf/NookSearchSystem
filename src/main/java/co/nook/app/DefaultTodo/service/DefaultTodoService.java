@@ -1,15 +1,13 @@
 package co.nook.app.DefaultTodo.service;
 
-import co.nook.app.DefaultTodo.vo.DefaultTodoVo;
-
-import java.util.ArrayList;
+import java.util.List;
 
 public interface DefaultTodoService{
-	public ArrayList<DefaultTodoVo> selectAll();
-	public DefaultTodoVo select(int key);
-	public int insert(DefaultTodoVo vo);
-	public int update(DefaultTodoVo vo);
-	public int delete(int key);
+	public List<DefaultTodoVO> selectAll();
+	public DefaultTodoVO select(DefaultTodoVO vo);
+	public void insert(DefaultTodoVO vo);
+	public void update(DefaultTodoVO vo);
+	public void delete(DefaultTodoVO vo);
 	public void truncate();
 
 }
